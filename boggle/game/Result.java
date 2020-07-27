@@ -1,4 +1,6 @@
-public enum TempName
+package boggle.game;
+
+public enum Result
 {
     ALREADYENTERED,
     CORRECT,

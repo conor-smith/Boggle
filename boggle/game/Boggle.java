@@ -1,9 +1,11 @@
+package boggle.game;
+
 import java.util.ArrayList;
 
 public class Boggle
 {
     //The game board with (0,0) at the top left corner
-    private char[][] board;
+    private String[][] board;
     private ArrayList<String> legalWords;
     private ArrayList<String> guessedWords;
     private int score;
@@ -13,27 +15,27 @@ public class Boggle
         reset();
     }
 
-    public Boggle(char[][] board)
+    public Boggle(String[][] board)
     {
         reset(board);
     }
 
-    public TempName enterWord(String word)
+    public Result enterWord(String word)
     {
         if(guessedWords.contains(word))
-            return TempName.ALREADYENTERED;
+            return Result.ALREADYENTERED;
         
         if(legalWords.contains(word))
         {
             score++;
             if(score >= legalWords.size())
-                return TempName.WIN;
+                return Result.WIN;
             else
-                return TempName.CORRECT;
+                return Result.CORRECT;
         }
         else
         {
-            return TempName.INCORRECT;
+            return Result.INCORRECT;
         }
     }
 
@@ -44,7 +46,7 @@ public class Boggle
                 System.out.println(board[i][j]);
     }
 
-    public char[][] getBoard()
+    public String[][] getBoard()
     {
         return board;
     }
@@ -60,7 +62,7 @@ public class Boggle
         findLegalWords();
     }
 
-    public void reset(char[][] board)
+    public void reset(String[][] board)
     {
         this.board = board;
         findLegalWords();
@@ -69,7 +71,7 @@ public class Boggle
     //TODO
     private void generateBoard()
     {
-
+        board = BoardGenerator.generateBoard();
     }
 
     //TODO
