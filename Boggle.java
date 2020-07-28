@@ -1,5 +1,3 @@
-package boggle.game;
-
 import java.util.ArrayList;
 
 public class Boggle

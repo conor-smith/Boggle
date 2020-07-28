@@ -1,5 +1,3 @@
-package boggle.game;
-
 public enum Result
 {
     ALREADYENTERED,

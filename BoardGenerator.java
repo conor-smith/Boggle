@@ -1,5 +1,3 @@
-package boggle.game;
-
 import java.util.*;
 import java.io.*;
 
