@@ -18,30 +18,28 @@ public class Boggle
         reset(board);
     }
 
-    public Result enterWord(String word)
+    public boolean enterWord(String word)
     {
-        if(guessedWords.contains(word))
-            return Result.ALREADYENTERED;
-        
-        if(legalWords.contains(word))
+        if(legalWords.contains(word) && !guessedWords.contains(word))
         {
-            score++;
-            if(score >= legalWords.size())
-                return Result.WIN;
-            else
-                return Result.CORRECT;
+            score += getWordScore(word);
+            guessedWords.add(word);
+            return true;
         }
         else
         {
-            return Result.INCORRECT;
+            return false;
         }
     }
 
     public void printBoard()
     {
         for(int i = 0;i < board.length;i++)
+        {
             for(int j = 0;j < board[0].length;j++)
-                System.out.println(board[i][j]);
+                System.out.print(board[i][j] + " ");
+            System.out.println();
+        }
     }
 
     public String[][] getBoard()
@@ -54,9 +52,23 @@ public class Boggle
         return legalWords;
     }
 
+    public int getScore()
+    {
+        return score;
+    }
+
+    public int getMaxScore()
+    {
+        int maxScore = 0;
+        for(String legalWord : legalWords)
+            maxScore += getWordScore(legalWord);
+        
+        return maxScore;
+    }
+
     public void reset()
     {
-        generateBoard();
+        board = BoardGenerator.generateBoard();
         findLegalWords();
     }
 
@@ -66,12 +78,20 @@ public class Boggle
         findLegalWords();
     }
 
-    //TODO
-    private void generateBoard()
+    private int getWordScore(String word)
     {
-        board = BoardGenerator.generateBoard();
+        if(word.length() <= 4)
+                return 1;
+            else if(word.length() <= 5)
+                return 2;
+            else if(word.length() <= 6)
+                return 3;
+            else if(word.length() <= 7)
+                return 4;
+            else
+                return 11;
     }
-
+    
     //TODO
     private void findLegalWords()
     {
