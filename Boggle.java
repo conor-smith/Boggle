@@ -68,8 +68,10 @@ public class Boggle
 
     public void reset()
     {
-        board = BoardGenerator.generateBoard();
-        findLegalWords();
+        this.score = 0;
+        this.guessedWords = new ArrayList<String>();
+        this.board = BoardGenerator.generateBoard();
+        this.legalWords = findLegalWords();
     }
 
     public void reset(String[][] board)
