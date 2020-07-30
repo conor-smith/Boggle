@@ -1768,7 +1768,6 @@ neighbour
 net
 network
 nicely
-no way
 object
 objection
 obligation
@@ -1779,8 +1778,6 @@ occasion
 occupy
 occur
 ocean
-o’clock
-of course
 operate
 oppose
 pace
@@ -1906,7 +1903,6 @@ predict
 practise
 praise
 potato
-post office
 pool
 politician
 policeman
@@ -1960,7 +1956,6 @@ youth
 had
 investigation
 vine
-T-shirt
 apricot
 attribute
 beetle
@@ -2695,7 +2690,6 @@ holding
 household
 housing
 heavily
-ice cream
 ideal
 identify
 illness
@@ -2739,7 +2733,6 @@ mud
 motorway
 mortgage
 moreover
-mobile phone
 mixture
 numerous
 nuisance
@@ -2962,11 +2955,9 @@ youngster
 gut
 crocodile
 dialect
-e-book
 hearty
 incurable
 jockey
-junk food
 mania
 margarine
 mosque
@@ -2975,7 +2966,8 @@ proclaim
 shiver
 skilful
 socket
-sportsman somewhere
+sportsman
+somewhere
 sweetheart
 amazing
 definitely
@@ -2984,7 +2976,6 @@ upstairs
 dangerous
 innocent
 apparently
-congratulations
 experience
 medical
 incredible
@@ -4338,7 +4329,6 @@ rural
 significance
 significant
 significantly
-so-called
 software
 solicitor
 sore
@@ -4354,7 +4344,6 @@ spokesman
 stall
 stare
 steep
-straightforward
 strategic
 strengthen
 string
@@ -4466,7 +4455,6 @@ careless
 cargo
 carpenter
 carriage
-carry on
 carsick
 cartoon
 cashier
@@ -4649,7 +4637,6 @@ immigrate
 immune
 impartial
 impolite
-income tax
 incomplete
 indirect
 indoor
@@ -4690,7 +4677,6 @@ lumber
 lying
 lyrics
 machinery
-made-up
 magnitude
 manufacture
 manufacturer
@@ -4731,7 +4717,6 @@ obese
 obituary
 oblige
 oily
-old-fashioned
 Olympics
 omelette
 omit
@@ -4759,7 +4744,6 @@ pail
 pajamas
 panel
 parrot
-part-time
 participant
 participation
 particle
@@ -4896,7 +4880,6 @@ dazzle
 debris
 deteriorate
 dexterity
-dining-room
 disclose
 disobedience
 dispel
@@ -5693,7 +5676,6 @@ kindergarten
 flaw
 diving
 discharge
-confidentiality
 blizzard
 amongst
 woody
@@ -6328,16 +6310,13 @@ utmost
 tack
 tangible
 tariff
-tea-pot
 teaspoon
 tedious
 teem
 temporal
 tendon
 testament
-test-tube
 textile
-text-message
 theological
 thought
 threshold
@@ -6387,7 +6366,6 @@ animosity
 annex
 anomalous
 anthem
-ant-hill
 antipathy
 antiquarian
 apathetic
@@ -6452,7 +6430,6 @@ boar
 bonfire
 bonnet
 botany
-box-office
 boycott
 boyish
 brim
@@ -6508,7 +6485,6 @@ coarse
 coax
 cobbler
 cod
-cod-liver
 cognition
 coil
 collaborate
@@ -6546,8 +6522,6 @@ continual
 contraceptive
 contrivance
 convey
-co-operate
-co-ordinate
 coral
 coronation
 correspond
@@ -6617,7 +6591,6 @@ discomfort
 discredit
 dismal
 dispatch
-dissatisfaction
 domicile
 dormitory
 dowry
@@ -6678,7 +6651,6 @@ giraffe
 girdle
 gloss
 gnat
-go-between
 grope
 guile
 gust
@@ -6718,7 +6690,6 @@ inaugurate
 inclination
 incomparable
 incompatible
-incomprehensible
 indecent
 indictment
 indifference
@@ -6733,7 +6704,6 @@ inhuman
 innumerable
 inoculate
 inoffensive
-in-patient
 inquire
 inscribe
 insensible
@@ -6795,7 +6765,6 @@ mutton
 navigable
 nitrogen
 nobility
-non-stop
 novice
 noxious
 null
@@ -6940,7 +6909,6 @@ sledge
 sleek
 slogan
 sociable
-son-in-law
 soot
 soothe
 sovereign
@@ -7296,7 +7264,6 @@ greatness
 girlie
 delirious
 cubicle
-check-up
 certified
 automobile
 athletic
@@ -7676,7 +7643,7 @@ lawfully
 intercept
 hector
 hamster
-grownup
+grown
 goldfish
 glued
 ghetto
@@ -8042,7 +8009,6 @@ mindless
 lullaby
 layout
 knob
-grown up
 flashy
 epic
 encode
@@ -8123,7 +8089,6 @@ duke
 dashing
 curry
 crumb
-crash down
 courier
 conclude
 cockroach
@@ -8384,7 +8349,6 @@ vexation
 vivacious
 voracious
 udder
-up-to-date
 tapestry
 tardy
 thimble
@@ -8686,7 +8650,6 @@ iodine
 irksome
 irreproachable
 irrigate
-jack-knife
 jagged
 javelin
 jeer
@@ -8698,7 +8661,6 @@ jut
 keel
 kernel
 kindle
-know-how
 lacquer
 laden
 ladle
@@ -8713,7 +8675,6 @@ laurel
 lavender
 levy
 lilac
-lime-tree
 linger
 locust
 loin
@@ -8758,7 +8719,6 @@ nominal
 noncommittal
 nondescript
 nook
-notwithstanding
 oblique
 oblong
 oppress
@@ -9006,7 +8966,6 @@ abjection
 abjure
 ablative
 ablaze
-able-bodied
 ably
 abnegate
 abnegation
@@ -9017,7 +8976,6 @@ abonnement
 aboriginal
 aborigines
 abortive
-above-average
 aboveboard
 abrasive
 abreast
@@ -9066,9 +9024,7 @@ agreeable
 ail
 ailment
 aimless
-air-condition
 airless
-air-tight
 airy
 akin
 alacrity
@@ -9077,7 +9033,6 @@ alcove
 alertness
 allay
 allocate
-all-purpose
 allure
 aloof
 alteration
@@ -9194,10 +9149,8 @@ bestial
 bestiality
 bestow
 bewitch
-big-hearted
 bigot
 bilingual
-bite-size
 blackcurrant
 blackness
 blameless
@@ -9221,12 +9174,9 @@ borough
 braid
 brainless
 brainpower
-brand-new
 brash
 brilliance
-brother-in-law
 brute
-built-in
 bystander
 calmness
 calumny
@@ -9237,7 +9187,6 @@ carbohydrate
 carbon
 carious
 carnivorous
-cast iron
 catchy
 cater
 cattish
@@ -9303,9 +9252,6 @@ compulsion
 concealment
 concede
 concourse
-concourse
-concur
-concur
 concur
 concurrence
 condiment
@@ -9333,7 +9279,6 @@ credulity
 crimpy
 culinary
 dashboard
-daughter-in-law
 daunt
 dauntless
 Daydream
@@ -9347,7 +9292,6 @@ decoction
 decompose
 decree
 deem
-deep-rooted
 deface
 deference
 deficit
@@ -9388,7 +9332,6 @@ discourteous
 discrepancy
 disembody
 disembroil
-dish-water
 disingenuous
 disinherit
 disloyal
@@ -9408,7 +9351,6 @@ divert
 divinity
 doable
 doer
-dog-collar
 domain
 doormant
 draught
@@ -9455,8 +9397,6 @@ fairness
 fairytale
 faithless
 falsify
-far-fetched
-father-in-law
 faultless
 fearsome
 feasible
@@ -9469,7 +9409,6 @@ fetid
 feudal
 fickle
 finesse
-fire-extinguisher
 firstly
 fitful
 fixedly
@@ -9499,7 +9438,6 @@ foresight
 foretaste
 forgetful
 forum
-foster-child
 frigility
 fraudulent
 freelance
@@ -9535,17 +9473,11 @@ grub
 gruel
 hailstone
 hairdresser
-half-baked
-half-brother
-half-moon
-half-time
-half-year
 halve
 hamper
 handgrip
 handicraft
 hangnail
-hard-boiled
 harden
 hardily
 hardness
@@ -9633,7 +9565,6 @@ lacy
 lagoon
 lanentable
 lamppost
-lamp-shade
 lance
 landfall
 landmark
@@ -9646,7 +9577,6 @@ latent
 lavishness
 lax
 laxative
-leap year
 leaseholder
 legalize
 leggy
@@ -9687,7 +9617,6 @@ mermaid
 merriment
 mesh
 mesmerize
-middle-aged
 midland
 midsummer
 midwife
@@ -9753,15 +9682,12 @@ occurrence
 octopus
 offender
 offset
-old-fashioned
 ominous
 omnipotent
 omnipresent
 oncoming
 onefold
 onerous
-open-air
-open-minded
 opinionated
 opinionated
 oppression
@@ -9837,7 +9763,6 @@ piety
 pillar
 pillowcase
 pilotage
-pine cone
 pinprick
 placidity
 plash
