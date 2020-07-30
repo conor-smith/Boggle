@@ -1,10 +1,10 @@
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class Boggle
 {
     //The game board with (0,0) at the top left corner
     private String[][] board;
-    private ArrayList<String> legalWords;
     private ArrayList<String> guessedWords;
     private int score;
 
@@ -18,9 +18,27 @@ public class Boggle
         reset(board);
     }
 
-    public boolean enterWord(String word)
+    public boolean enterWord(LinkedHashSet<Position> positions) throws BoggleException
     {
-        if(legalWords.contains(word) && !guessedWords.contains(word))
+        Position prev = null;
+        String word = "";
+        for(Position pos : positions)
+        {
+            if(pos.x < 0 || pos.x > 15 || pos.y < 0 || pos.y > 15)
+                throw new BoggleException("Position is out of bounds");
+            
+            if(prev != null)
+                if(!(prev.x >= pos.x - 1 && prev.x <= pos.x + 1 &&
+                   prev.y >= pos.y - 1 && prev.y <= pos.y + 1))
+                   throw new BoggleException("Word is illegal");
+
+            word += board[pos.x][pos.y];
+        }
+
+        if(!BoggleDictionary.wordIsLegal(word))
+            return false;
+
+        if(!guessedWords.contains(word))
         {
             score += getWordScore(word);
             guessedWords.add(word);
@@ -47,35 +65,19 @@ public class Boggle
         return board;
     }
 
-    public ArrayList<String> getLegalWords()
-    {
-        return legalWords;
-    }
-
     public int getScore()
     {
         return score;
     }
 
-    public int getMaxScore()
-    {
-        int maxScore = 0;
-        for(String legalWord : legalWords)
-            maxScore += getWordScore(legalWord);
-        
-        return maxScore;
-    }
-
     public void reset()
     {
         board = BoardGenerator.generateBoard();
-        findLegalWords();
     }
 
     public void reset(String[][] board)
     {
         this.board = board;
-        findLegalWords();
     }
 
     private int getWordScore(String word)
@@ -87,14 +89,8 @@ public class Boggle
             else if(word.length() <= 6)
                 return 3;
             else if(word.length() <= 7)
-                return 4;
+                return 5;
             else
                 return 11;
-    }
-    
-    //TODO
-    private void findLegalWords()
-    {
-
     }
 }
