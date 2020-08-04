@@ -5,7 +5,7 @@ public class Boggle
 {
     //The game board with (0,0) at the top left corner
     private String[][] board;
-    private ArrayList<String> guessedWords;
+    private ArrayList<String> guessedWords = new ArrayList<String>();
     private int score;
 
     public Boggle()
@@ -25,12 +25,12 @@ public class Boggle
         for(Position pos : positions)
         {
             if(pos.x < 0 || pos.x > 15 || pos.y < 0 || pos.y > 15)
-                throw new BoggleException("Position is out of bounds");
+                throw new BoggleException("Position " + pos.x + ", " + pos.y + " is out of bounds");
             
             if(prev != null)
                 if(!(prev.x >= pos.x - 1 && prev.x <= pos.x + 1 &&
                    prev.y >= pos.y - 1 && prev.y <= pos.y + 1))
-                   throw new BoggleException("Word is illegal");
+                   throw new BoggleException("List of positions is illegal");
 
             word += board[pos.x][pos.y];
         }
@@ -55,7 +55,7 @@ public class Boggle
         for(int i = 0;i < board.length;i++)
         {
             for(int j = 0;j < board[0].length;j++)
-                System.out.print(board[i][j] + " ");
+                System.out.print(board[j][i] + " ");
             System.out.println();
         }
     }
