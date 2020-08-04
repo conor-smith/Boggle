@@ -1,3 +1,5 @@
+package fdmBoggle.game;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
@@ -10,11 +12,13 @@ public class Boggle
 
     public Boggle()
     {
+        BoggleDictionary.init();
         reset();
     }
 
     public Boggle(String[][] board)
     {
+        BoggleDictionary.init();
         reset(board);
     }
 
@@ -24,7 +28,7 @@ public class Boggle
         String word = "";
         for(Position pos : positions)
         {
-            if(pos.x < 0 || pos.x > 15 || pos.y < 0 || pos.y > 15)
+            if(pos.x < 0 || pos.x >= 4 || pos.y < 0 || pos.y >= 4)
                 throw new BoggleException("Position " + pos.x + ", " + pos.y + " is out of bounds");
             
             if(prev != null)

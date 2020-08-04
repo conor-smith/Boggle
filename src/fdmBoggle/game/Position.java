@@ -1,3 +1,5 @@
+package fdmBoggle.game;
+
 public class Position {
 
     public int x;

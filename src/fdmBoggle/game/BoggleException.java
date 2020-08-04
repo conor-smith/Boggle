@@ -1,3 +1,5 @@
+package fdmBoggle.game;
+
 public class BoggleException extends Exception
 {
 

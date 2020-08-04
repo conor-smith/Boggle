@@ -1,3 +1,5 @@
+package fdmBoggle.game;
+
 import java.util.*;
 import java.io.*;
 
@@ -10,7 +12,7 @@ public class BoardGenerator {
         ArrayList<String> letters = new ArrayList<String>();
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader(new File("dice.txt")));
+            BufferedReader br = new BufferedReader(new FileReader(new File("fdmBoggle/data/dice.txt")));
             String line = br.readLine();
             for(int i = 0;i < 16;i++)
             {

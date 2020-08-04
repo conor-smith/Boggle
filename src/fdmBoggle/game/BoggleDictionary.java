@@ -1,3 +1,5 @@
+package fdmBoggle.game;
+
 import java.io.*;
 import java.util.HashSet;
 
@@ -5,12 +7,12 @@ public class BoggleDictionary
 {
     private static HashSet<String> dict;
 
-    private static void init()
+    public static void init()
     {
         dict = new HashSet<String>(9900);
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader("dict.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("fdmBoggle/data/dict.txt"));
             String line = br.readLine();
 
             while(line != null)
@@ -29,9 +31,6 @@ public class BoggleDictionary
 
     public static boolean wordIsLegal(String word)
     {
-        if(dict == null)
-            init();
-
         if(dict.contains(word.toLowerCase()))
             return true;
         else
