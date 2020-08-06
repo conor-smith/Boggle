@@ -9,7 +9,7 @@ public class BoggleDictionary
 
     public static void init()
     {
-        dict = new HashSet<String>(64486);
+        dict = new HashSet<String>(65100);
         try
         {
             BufferedReader br = new BufferedReader(new FileReader("fdmBoggle/data/dict.txt"));
