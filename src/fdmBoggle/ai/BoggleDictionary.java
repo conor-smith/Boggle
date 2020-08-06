@@ -1,4 +1,4 @@
-package fdmBoggle.game;
+package fdmBoggle.ai;
 
 import java.io.*;
 import java.util.HashSet;
@@ -31,6 +31,9 @@ public class BoggleDictionary
 
     public static boolean wordIsLegal(String word)
     {
+        if(dict == null)
+            init();
+
         if(dict.contains(word.toLowerCase()))
             return true;
         else

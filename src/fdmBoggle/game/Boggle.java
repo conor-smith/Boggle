@@ -1,48 +1,30 @@
 package fdmBoggle.game;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+import fdmBoggle.ai.WordGetter;
 
 public class Boggle
 {
     //The game board with (0,0) at the top left corner
     private String[][] board;
     private ArrayList<String> guessedWords = new ArrayList<String>();
+    private HashSet<String> legalWords;
     private int score;
 
     public Boggle()
     {
-        BoggleDictionary.init();
         reset();
     }
 
-    public Boggle(String[][] board)
+    public Boggle(String[][] board) throws BoggleException
     {
-        BoggleDictionary.init();
         reset(board);
     }
 
-    public boolean enterWord(LinkedHashSet<Position> positions) throws BoggleException
+    public boolean enterWord(String word)
     {
-        Position prev = null;
-        String word = "";
-        for(Position pos : positions)
-        {
-            if(pos.x < 0 || pos.x >= 4 || pos.y < 0 || pos.y >= 4)
-                throw new BoggleException("Position " + pos.x + ", " + pos.y + " is out of bounds");
-            
-            if(prev != null)
-                if(!(prev.x >= pos.x - 1 && prev.x <= pos.x + 1 &&
-                   prev.y >= pos.y - 1 && prev.y <= pos.y + 1))
-                   throw new BoggleException("List of positions is illegal");
-
-            word += board[pos.x][pos.y];
-        }
-
-        if(!BoggleDictionary.wordIsLegal(word))
-            return false;
-
-        if(!guessedWords.contains(word))
+        if(!guessedWords.contains(word) && legalWords.contains(word))
         {
             score += getWordScore(word);
             guessedWords.add(word);
@@ -77,11 +59,15 @@ public class Boggle
     public void reset()
     {
         board = BoardGenerator.generateBoard();
+        legalWords = WordGetter.getLegalWords(this);
     }
 
-    public void reset(String[][] board)
+    public void reset(String[][] board) throws BoggleException
     {
+        if(board.length > 4 || board[0].length > 4)
+            throw new BoggleException("Board must be of size 4x4");
         this.board = board;
+        legalWords = WordGetter.getLegalWords(this);
     }
 
     private int getWordScore(String word)
