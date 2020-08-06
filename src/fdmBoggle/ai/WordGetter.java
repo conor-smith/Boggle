@@ -28,8 +28,8 @@ public class WordGetter
         if(currentWord.length() >= 3 && BoggleDictionary.wordIsLegal(currentWord))
             legalWords.add(currentWord);
         
-        for(int i = currentPosition.x - 1;i < currentPosition.x + 1;i++)
-            for(int j = currentPosition.y - 1;j < currentPosition.y + 1;j++)
+        for(int i = currentPosition.x - 1;i <= currentPosition.x + 1;i++)
+            for(int j = currentPosition.y - 1;j <= currentPosition.y + 1;j++)
                 if(!(i < 0 || i >= 4 || j < 0 || j >= 4))
                 {
                     Position temp = new Position(i, j);
