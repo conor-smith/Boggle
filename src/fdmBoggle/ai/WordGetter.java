@@ -22,6 +22,7 @@ public class WordGetter
 
     private static void getWords(String[][] board, HashSet<String> legalWords, HashSet<Position> previousPositions, String currentWord, Position currentPosition)
     {
+        previousPositions.add(currentPosition);
         currentWord += board[currentPosition.x][currentPosition.y];
 
         if(currentWord.length() >= 3 && BoggleDictionary.wordIsLegal(currentWord))

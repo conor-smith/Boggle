@@ -9,7 +9,7 @@ public class BoggleDictionary
 
     public static void init()
     {
-        dict = new HashSet<String>(9900);
+        dict = new HashSet<String>(64486);
         try
         {
             BufferedReader br = new BufferedReader(new FileReader("fdmBoggle/data/dict.txt"));
@@ -34,9 +34,6 @@ public class BoggleDictionary
         if(dict == null)
             init();
 
-        if(dict.contains(word.toLowerCase()))
-            return true;
-        else
-            return false;
+        return(dict.contains(word.toLowerCase()));
     }
 }

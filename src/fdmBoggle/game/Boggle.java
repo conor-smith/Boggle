@@ -22,6 +22,20 @@ public class Boggle
         reset(board);
     }
 
+    public void reset()
+    {
+        board = BoardGenerator.generateBoard();
+        legalWords = WordGetter.getLegalWords(this);
+    }
+
+    public void reset(String[][] board) throws BoggleException
+    {
+        if(board.length > 4 || board[0].length > 4)
+            throw new BoggleException("Board must be of size 4x4");
+        this.board = board;
+        legalWords = WordGetter.getLegalWords(this);
+    }
+
     public boolean enterWord(String word)
     {
         if(!guessedWords.contains(word) && legalWords.contains(word))
@@ -51,23 +65,14 @@ public class Boggle
         return board;
     }
 
+    public HashSet<String> getLegalWords()
+    {
+        return legalWords;
+    }
+
     public int getScore()
     {
         return score;
-    }
-
-    public void reset()
-    {
-        board = BoardGenerator.generateBoard();
-        legalWords = WordGetter.getLegalWords(this);
-    }
-
-    public void reset(String[][] board) throws BoggleException
-    {
-        if(board.length > 4 || board[0].length > 4)
-            throw new BoggleException("Board must be of size 4x4");
-        this.board = board;
-        legalWords = WordGetter.getLegalWords(this);
     }
 
     private int getWordScore(String word)
