@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class ButtonListener implements ActionListener{
+public class ButtonManager implements ActionListener{
 
     private BoggleButton[][] buttons;
     private ArrayList<BoggleButton> activeButtons = new ArrayList<BoggleButton>();
     private ArrayList<BoggleButton> availableButtons = new ArrayList<BoggleButton>();
 
-    public ButtonListener(BoggleButton[][] buttons)
+    public ButtonManager(BoggleButton[][] buttons)
     {
         this.buttons = buttons;
     }
@@ -41,7 +41,7 @@ public class ButtonListener implements ActionListener{
     
     private void removeLetters(BoggleButton source)
     {
-        java.util.List<BoggleButton> toRemove = activeButtons.subList(activeButtons.indexOf(source), activeButtons.size());
+        java.util.List<BoggleButton> toRemove = activeButtons.subList(activeButtons.indexOf(source) + 1, activeButtons.size());
         for(BoggleButton temp : toRemove)
             temp.setBackground(Color.LIGHT_GRAY);
 
