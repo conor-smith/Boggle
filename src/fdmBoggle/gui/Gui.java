@@ -2,9 +2,10 @@ package fdmBoggle.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import fdmBoggle.game.Boggle;
 
-public class Gui extends JFrame
+public class Gui extends JFrame implements ActionListener
 {
     private static final long serialVersionUID = 3781965546199397230L;
 
@@ -24,7 +25,7 @@ public class Gui extends JFrame
         buttons.setLayout(new GridLayout(4, 4));
         buttons.setBounds(50, 200, 400, 400);
         board = new BoggleButton[4][4];
-        ButtonManager buttonManager = new ButtonManager(board);
+        ButtonManager buttonManager = new ButtonManager(board, this);
         for(int i = 0;i < 4;i++)
             for(int j = 0;j < 4;j++)
             {
@@ -35,8 +36,10 @@ public class Gui extends JFrame
 
         reset = new JButton("Reset");
         reset.setBounds(50, 650, 100, 30);
+        reset.addActionListener(this);
         enter = new JButton("Enter");
         enter.setBounds(350, 650, 100, 30);
+        enter.addActionListener(buttonManager);
 
         title = new JLabel("Boggle");
         title.setBounds(0, 0, 700, 100);
@@ -62,6 +65,8 @@ public class Gui extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         reset();
+
+        buttonManager.setBoggle(boggle);
     }
 
     public void reset()
@@ -75,5 +80,16 @@ public class Gui extends JFrame
         for(int i = 0;i < 4;i++)
             for(int j = 0;j < 4;j++)
                 board[i][j].setText(gameBoard[i][j]);
+    }
+
+    public void updateScore()
+    {
+        //TODO
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        // TODO Auto-generated method stub
     }
 }

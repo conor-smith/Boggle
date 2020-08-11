@@ -3,47 +3,88 @@ package fdmBoggle.gui;
 import java.awt.Color;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import fdmBoggle.game.Boggle;
 
 public class ButtonManager implements ActionListener{
 
     private BoggleButton[][] buttons;
     private ArrayList<BoggleButton> activeButtons = new ArrayList<BoggleButton>();
     private ArrayList<BoggleButton> availableButtons = new ArrayList<BoggleButton>();
+    private Boggle boggle;
+    private Gui gui;
 
-    public ButtonManager(BoggleButton[][] buttons)
+    private final Color DEFAULT_COLOUR = Color.LIGHT_GRAY;
+
+    public ButtonManager(BoggleButton[][] buttons, Gui gui)
     {
         this.buttons = buttons;
+        this.gui = gui;
+    }
+
+    public void setBoggle(Boggle boggle)
+    {
+        this.boggle = boggle;
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        BoggleButton source = (BoggleButton) e.getSource();
-
-        if(activeButtons.contains(source))
-            removeLetters(source);
-        else if(!availableButtons.contains(source))
-            newWord(source);
+        if(((JButton) e.getSource()).getText() == "Enter")
+        {
+            enter();
+        }
         else
-            addLetters(source);
+        {
+            BoggleButton source = (BoggleButton) e.getSource();
+
+            if(activeButtons.contains(source))
+                removeLetters(source);
+            else if(!availableButtons.contains(source))
+                newWord(source);
+            else
+                addLetters(source);
         
+            updateAvailableButtons();
+        }
+    }
+
+    public void enter()
+    {
+        String word = "";
+        for(BoggleButton temp : activeButtons)
+            word += temp.getText();
+
+        boggle.enterWord(word);
+        
+        // Color winLose = boggle.enterWord(word) ? Color.GREEN : Color.RED;
+
+        // for(BoggleButton temp : activeButtons)
+        //     temp.setBackground(winLose);
+        
+        // try
+        // {
+        //     Thread.sleep(1000);
+        // }
+        // catch(Exception e)
+        // {}
+
+        resetActiveButtons();
         updateAvailableButtons();
+        gui.updateScore();
     }
 
     private void newWord(BoggleButton source)
     {
-        for(BoggleButton temp : activeButtons)
-            temp.setBackground(Color.LIGHT_GRAY);
-
-        activeButtons = new ArrayList<BoggleButton>();
-        activeButtons.add(source);
+        resetActiveButtons();
+        addLetters(source);
     }
     
     private void removeLetters(BoggleButton source)
     {
         java.util.List<BoggleButton> toRemove = activeButtons.subList(activeButtons.indexOf(source) + 1, activeButtons.size());
         for(BoggleButton temp : toRemove)
-            temp.setBackground(Color.LIGHT_GRAY);
+            temp.setBackground(DEFAULT_COLOUR);
 
         activeButtons.removeAll(toRemove);
     }
@@ -53,10 +94,18 @@ public class ButtonManager implements ActionListener{
         activeButtons.add(source);
     }
 
+    private void resetActiveButtons()
+    {
+        for(BoggleButton temp : activeButtons)
+            temp.setBackground(DEFAULT_COLOUR);
+        
+        activeButtons = new ArrayList<BoggleButton>();
+    }
+
     private void updateAvailableButtons()
     {
         for(BoggleButton temp : availableButtons)
-            temp.setBackground(Color.LIGHT_GRAY);
+            temp.setBackground(DEFAULT_COLOUR);
 
         if(activeButtons.size() > 0)
         {
