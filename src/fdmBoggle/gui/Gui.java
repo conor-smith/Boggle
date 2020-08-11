@@ -11,7 +11,7 @@ public class Gui extends JFrame implements ActionListener
 
     BoggleButton[][] board;
     JButton reset, enter;
-    JLabel title, timer, score, words;
+    JLabel title, timer, scoreLabel, score, words;
     JScrollPane wordbox;
     ButtonManager buttonManager;
     Boggle boggle;
@@ -25,7 +25,7 @@ public class Gui extends JFrame implements ActionListener
         buttons.setLayout(new GridLayout(4, 4));
         buttons.setBounds(50, 200, 400, 400);
         board = new BoggleButton[4][4];
-        ButtonManager buttonManager = new ButtonManager(board, this);
+        buttonManager = new ButtonManager(board, this);
         for(int i = 0;i < 4;i++)
             for(int j = 0;j < 4;j++)
             {
@@ -45,8 +45,10 @@ public class Gui extends JFrame implements ActionListener
         title.setBounds(0, 0, 700, 100);
         timer = new JLabel("Timer");
         timer.setBounds(100, 100, 200, 40);
-        score = new JLabel("Score");
-        score.setBounds(500, 100, 200, 40);
+        scoreLabel = new JLabel("Score");
+        scoreLabel.setBounds(500, 100, 50, 40);
+        score = new JLabel("0");
+        score.setBounds(550, 100, 50, 40);
 
         wordbox = new JScrollPane();
         wordbox.setBounds(500, 200, 200, 500);
@@ -56,6 +58,7 @@ public class Gui extends JFrame implements ActionListener
         add(title);
         add(enter);
         add(timer);
+        add(scoreLabel);
         add(score);
         add(wordbox);
 
@@ -80,16 +83,19 @@ public class Gui extends JFrame implements ActionListener
         for(int i = 0;i < 4;i++)
             for(int j = 0;j < 4;j++)
                 board[i][j].setText(gameBoard[i][j]);
+        
+        updateScore();
     }
 
     public void updateScore()
     {
-        //TODO
+        score.setText(Integer.toString(boggle.getScore()));
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        // TODO Auto-generated method stub
+        reset();
+        buttonManager.reset();
     }
 }

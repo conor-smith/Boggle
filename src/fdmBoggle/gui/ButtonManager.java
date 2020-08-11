@@ -74,6 +74,12 @@ public class ButtonManager implements ActionListener{
         gui.updateScore();
     }
 
+    public void reset()
+    {
+        resetActiveButtons();
+        updateAvailableButtons();
+    }
+
     private void newWord(BoggleButton source)
     {
         resetActiveButtons();
