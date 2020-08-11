@@ -8,7 +8,7 @@ public class Gui extends JFrame
 {
     private static final long serialVersionUID = 3781965546199397230L;
 
-    Button[][] board;
+    BoggleButton[][] board;
 
     public Gui()
     {
@@ -26,7 +26,7 @@ public class Gui extends JFrame
         if(board == null)
         {
             firstGame = true;
-            board = new Button[4][4];
+            board = new BoggleButton[4][4];
         }
         else
         {
@@ -53,15 +53,14 @@ public class Gui extends JFrame
 
         for(int i = 0;i < 4;i++)
             for(int j = 0;j < 4;j++)
+            {
                 if(firstGame)
                 {
-                    board[i][j] = new Button(gBoard[i][j]);
+                    board[i][j] = new BoggleButton(i, j);
                     buttons.add(board[i][j]);
                 }
-                else
-                {
-                    board[i][j].setName(gBoard[i][j]);
-                }
+                board[i][j].setName(gBoard[i][j]);
+            }
         
         add(buttons);
         add(reset);
@@ -70,6 +69,8 @@ public class Gui extends JFrame
         add(timer);
         add(score);
         add(words);
+        
+        board[1][1].setBackground(Color.RED);
 
         setSize(700, 750);
         setLayout(null);
