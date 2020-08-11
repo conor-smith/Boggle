@@ -8,7 +8,7 @@ public class Boggle
 {
     //The game board with (0,0) at the top left corner
     private String[][] board;
-    private ArrayList<String> guessedWords = new ArrayList<String>();
+    private ArrayList<String> guessedWords;
     private HashSet<String> legalWords;
     private int score;
 
@@ -26,6 +26,8 @@ public class Boggle
     {
         board = BoardGenerator.generateBoard();
         legalWords = WordGetter.getLegalWords(this);
+        score = 0;
+        guessedWords = new ArrayList<String>();
     }
 
     public void reset(String[][] board) throws BoggleException
@@ -34,6 +36,8 @@ public class Boggle
             throw new BoggleException("Board must be of size 4x4");
         this.board = board;
         legalWords = WordGetter.getLegalWords(this);
+        score = 0;
+        guessedWords = new ArrayList<String>();
     }
 
     public boolean enterWord(String word)

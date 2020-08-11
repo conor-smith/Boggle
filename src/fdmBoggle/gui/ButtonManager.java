@@ -55,19 +55,8 @@ public class ButtonManager implements ActionListener{
         for(BoggleButton temp : activeButtons)
             word += temp.getText();
 
-        boggle.enterWord(word);
-        
-        // Color winLose = boggle.enterWord(word) ? Color.GREEN : Color.RED;
-
-        // for(BoggleButton temp : activeButtons)
-        //     temp.setBackground(winLose);
-        
-        // try
-        // {
-        //     Thread.sleep(1000);
-        // }
-        // catch(Exception e)
-        // {}
+        if(boggle.enterWord(word))
+            gui.wordArea.append(word + "\n");
 
         resetActiveButtons();
         updateAvailableButtons();
@@ -88,7 +77,7 @@ public class ButtonManager implements ActionListener{
     
     private void removeLetters(BoggleButton source)
     {
-        java.util.List<BoggleButton> toRemove = activeButtons.subList(activeButtons.indexOf(source) + 1, activeButtons.size());
+        java.util.List<BoggleButton> toRemove = activeButtons.subList(activeButtons.indexOf(source), activeButtons.size());
         for(BoggleButton temp : toRemove)
             temp.setBackground(DEFAULT_COLOUR);
 

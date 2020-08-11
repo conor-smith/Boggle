@@ -14,6 +14,7 @@ public class Gui extends JFrame implements ActionListener
     JLabel title, timer, scoreLabel, score, words;
     JScrollPane wordbox;
     ButtonManager buttonManager;
+    JTextArea wordArea;
     Boggle boggle;
 
     public Gui()
@@ -50,8 +51,12 @@ public class Gui extends JFrame implements ActionListener
         score = new JLabel("0");
         score.setBounds(550, 100, 50, 40);
 
-        wordbox = new JScrollPane();
+        wordArea = new JTextArea();
+        wordArea.setEditable(false);
+
+        wordbox = new JScrollPane(wordArea);
         wordbox.setBounds(500, 200, 200, 500);
+        
 
         add(buttons);
         add(reset);
@@ -84,6 +89,7 @@ public class Gui extends JFrame implements ActionListener
             for(int j = 0;j < 4;j++)
                 board[i][j].setText(gameBoard[i][j]);
         
+        wordArea.setText("");
         updateScore();
     }
 
