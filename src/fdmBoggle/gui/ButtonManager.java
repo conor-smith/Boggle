@@ -134,7 +134,7 @@ public class ButtonManager implements ActionListener{
                 temp.setBackground(Color.WHITE);
                 
             for(BoggleButton temp : availableButtons)
-                temp.setBackground(Color.BLUE);
+                temp.setBackground(Color.CYAN);
         }
     }
 }

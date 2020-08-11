@@ -69,11 +69,6 @@ public class Boggle
         return board;
     }
 
-    public HashSet<String> getLegalWords()
-    {
-        return legalWords;
-    }
-
     public int getScore()
     {
         return score;

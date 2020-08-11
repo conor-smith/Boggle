@@ -94,7 +94,7 @@ public class Gui extends JFrame implements ActionListener
         
         wordArea.setText("");
         updateScore();
-        time = 20;
+        time = 180;
         if(timer != null)
             timer.cancel();
         timer = new Timer(true);
