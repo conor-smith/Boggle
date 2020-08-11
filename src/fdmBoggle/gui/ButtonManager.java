@@ -67,6 +67,18 @@ public class ButtonManager implements ActionListener{
     {
         resetActiveButtons();
         updateAvailableButtons();
+
+
+        for(BoggleButton[] tempA : buttons)
+            for(BoggleButton tempB : tempA)
+                tempB.setEnabled(true);
+    }
+
+    public void finish()
+    {
+        for(BoggleButton[] tempA : buttons)
+            for(BoggleButton tempB : tempA)
+                tempB.setEnabled(false);
     }
 
     private void newWord(BoggleButton source)

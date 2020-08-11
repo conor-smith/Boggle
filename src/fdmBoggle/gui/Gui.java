@@ -2,20 +2,23 @@ package fdmBoggle.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.*;
 import fdmBoggle.game.Boggle;
-
 public class Gui extends JFrame implements ActionListener
 {
     private static final long serialVersionUID = 3781965546199397230L;
 
     BoggleButton[][] board;
     JButton reset, enter;
-    JLabel title, timer, scoreLabel, score, words;
+    JLabel title, timerLabel, scoreLabel, score, words;
     JScrollPane wordbox;
     ButtonManager buttonManager;
     JTextArea wordArea;
     Boggle boggle;
+    Timer timer;
+    int time;
 
     public Gui()
     {
@@ -44,8 +47,8 @@ public class Gui extends JFrame implements ActionListener
 
         title = new JLabel("Boggle");
         title.setBounds(0, 0, 700, 100);
-        timer = new JLabel("Timer");
-        timer.setBounds(100, 100, 200, 40);
+        timerLabel = new JLabel("Timer");
+        timerLabel.setBounds(100, 100, 200, 40);
         scoreLabel = new JLabel("Score");
         scoreLabel.setBounds(500, 100, 50, 40);
         score = new JLabel("0");
@@ -62,7 +65,7 @@ public class Gui extends JFrame implements ActionListener
         add(reset);
         add(title);
         add(enter);
-        add(timer);
+        add(timerLabel);
         add(scoreLabel);
         add(score);
         add(wordbox);
@@ -91,6 +94,11 @@ public class Gui extends JFrame implements ActionListener
         
         wordArea.setText("");
         updateScore();
+        time = 20;
+        if(timer != null)
+            timer.cancel();
+        timer = new Timer(true);
+        timer.scheduleAtFixedRate(new CountDown(), 1000, 1000);
     }
 
     public void updateScore()
@@ -103,5 +111,27 @@ public class Gui extends JFrame implements ActionListener
     {
         reset();
         buttonManager.reset();
+    }
+
+    private class CountDown extends TimerTask
+    {
+
+        @Override
+        public void run()
+        {
+            time--;
+            
+            if(time < 0)
+            {
+                timer.cancel();
+                timerLabel.setText("Times up!");
+                buttonManager.finish();
+            }
+            else
+            {
+                timerLabel.setText(time / 60 + ":" + (time % 60 < 10 ? "0" + time % 60 : time % 60));
+            }
+        }
+        
     }
 }
