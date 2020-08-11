@@ -61,6 +61,11 @@ public class Gui extends JFrame
                 }
                 board[i][j].setName(gBoard[i][j]);
             }
+
+        ButtonListener buttonListener = new ButtonListener(board);
+        for(BoggleButton[] tempx : board)
+            for(BoggleButton tempy : tempx)
+                tempy.addActionListener(buttonListener);
         
         add(buttons);
         add(reset);
@@ -69,8 +74,6 @@ public class Gui extends JFrame
         add(timer);
         add(score);
         add(words);
-        
-        board[1][1].setBackground(Color.RED);
 
         setSize(700, 750);
         setLayout(null);
