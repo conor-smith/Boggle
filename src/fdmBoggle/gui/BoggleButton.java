@@ -1,5 +1,7 @@
 package fdmBoggle.gui;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 
 public class BoggleButton extends JButton
@@ -12,5 +14,6 @@ public class BoggleButton extends JButton
     {
         this.bx = bx;
         this.by = by;
+        setBackground(Color.LIGHT_GRAY);
     }
 }

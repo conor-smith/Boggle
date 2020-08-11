@@ -58,24 +58,27 @@ public class ButtonListener implements ActionListener{
         for(BoggleButton temp : availableButtons)
             temp.setBackground(Color.LIGHT_GRAY);
 
-        availableButtons = new ArrayList<BoggleButton>();
-        BoggleButton last = activeButtons.get(activeButtons.size() - 1);
-        int x = last.bx;
-        int y = last.by;
+        if(activeButtons.size() > 0)
+        {
+            availableButtons = new ArrayList<BoggleButton>();
+            BoggleButton last = activeButtons.get(activeButtons.size() - 1);
+            int x = last.bx;
+            int y = last.by;
 
-        for(int i = x - 1;i <= x + 1;i++)
-            for(int j = y - 1;j <= y + 1;j++)
-                if(i >= 0 && i < 4 && j >= 0 && j < 4)
-                {
-                    BoggleButton temp = buttons[i][j];
-                    if(!activeButtons.contains(temp))
-                        availableButtons.add(temp);
-                }
+            for(int i = x - 1;i <= x + 1;i++)
+                for(int j = y - 1;j <= y + 1;j++)
+                    if(i >= 0 && i < 4 && j >= 0 && j < 4)
+                    {
+                        BoggleButton temp = buttons[i][j];
+                        if(!activeButtons.contains(temp))
+                            availableButtons.add(temp);
+                    }
 
-        for(BoggleButton temp : activeButtons)
-            temp.setBackground(Color.WHITE);
-        
-        for(BoggleButton temp : availableButtons)
-            temp.setBackground(Color.BLUE);
+            for(BoggleButton temp : activeButtons)
+                temp.setBackground(Color.WHITE);
+                
+            for(BoggleButton temp : availableButtons)
+                temp.setBackground(Color.BLUE);
+        }
     }
 }

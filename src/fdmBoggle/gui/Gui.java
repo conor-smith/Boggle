@@ -59,7 +59,7 @@ public class Gui extends JFrame
                     board[i][j] = new BoggleButton(i, j);
                     buttons.add(board[i][j]);
                 }
-                board[i][j].setName(gBoard[i][j]);
+                board[i][j].setText(gBoard[i][j]);
             }
 
         ButtonListener buttonListener = new ButtonListener(board);
