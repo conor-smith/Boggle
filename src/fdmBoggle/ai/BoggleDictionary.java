@@ -12,7 +12,7 @@ public class BoggleDictionary
         dict = new HashSet<String>(65100);
         try
         {
-            BufferedReader br = new BufferedReader(new FileReader("fdmBoggle/data/dict.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + "/Documents/data/dict.txt"));
             String line = br.readLine();
 
             while(line != null)
