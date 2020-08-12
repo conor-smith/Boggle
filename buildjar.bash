@@ -1,2 +1,2 @@
-javac src/fdmBoggle/*/*.java
+javac -d . src/fdmBoggle/*/*.java
 jar cfm Boggle.jar Boggle.mf fdmBoggle
