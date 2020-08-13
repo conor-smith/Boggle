@@ -19,11 +19,21 @@ public class Tournament
         File[] playerClassFiles = playersDirectory.listFiles();
         BogglePlayer[] players = new BogglePlayer[playerClassFiles.length];
         Boggle[] games = new Boggle[noOfGames];
-
+        
+        File resultsFile = new File(System.getProperty("user.home") + "/Documents/tournament.csv");
+        FileWriter output = null;
+        
         System.out.println("Loading players");
         
         try
         {
+            if(!resultsFile.exists())
+            {
+                System.out.println("Creating results file at " + resultsFile);
+                resultsFile.createNewFile();
+            }
+
+            output = new FileWriter(resultsFile);
             classLoader = new URLClassLoader(new URL[] {new URL("file://" + System.getProperty("user.home") + "/Documents/players/")});
             for(int i = 0;i < playerClassFiles.length;i++)
             {
@@ -38,26 +48,6 @@ public class Tournament
             System.out.println(e.getMessage());
             return;
         }
-
-
-        File resultsFile = new File(System.getProperty("user.home") + "/Documents/tournament.csv");
-
-        FileWriter output = null;
-        try
-        {
-            if(!resultsFile.exists())
-            {
-                System.out.println("Creating results file at " + resultsFile);
-                resultsFile.createNewFile();
-            }
-            output = new FileWriter(resultsFile);
-        }
-        catch(IOException e)
-        {
-            System.out.println("Error: Cannot create results file. Exiting");
-            return;
-        }
-        
 
         System.out.println("Creating game boards.");
 
@@ -74,7 +64,7 @@ public class Tournament
             output.write("\n , ");
             for(int i = 0;i < noOfGames;i++)
                 output.write("score, time(milliseconds), score/time, ");
-            output.write("\n , ");
+            output.write("\n");
         
             for(BogglePlayer player : players)
             {
@@ -91,9 +81,9 @@ public class Tournament
                         long endTime = System.currentTimeMillis();
                         long timeTaken = endTime - startTime;
 
-                        output.write(game.getScore() + ", " + timeTaken + ", " + (game.getScore() / timeTaken) + ", ");
+                        output.write(game.getScore() + ", " + timeTaken + ", " + ((double)game.getScore() / (double)timeTaken) + ", ");
                         
-                        System.out.println("Player " + player.toString() + " took " + timeTaken + "milliseconds to get " + game.getScore() + " points");
+                        System.out.println("Player " + player.toString() + " took " + timeTaken + " milliseconds to get " + game.getScore() + " points");
                         game.resetScoreAndGuesses();
                     }
                     
