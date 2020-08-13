@@ -1,4 +1,4 @@
 .vscode
 *.class
-Test.java
+Test*
 *.jar

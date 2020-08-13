@@ -11,14 +11,23 @@ public class Boggle
     private ArrayList<String> guessedWords;
     private HashSet<String> legalWords;
     private int score;
+    boolean tournamentMode;
 
     public Boggle()
     {
+        tournamentMode = false;
         reset();
     }
 
-    public Boggle(String[][] board) throws BoggleException
+    public Boggle(boolean tournamentMode)
     {
+        this.tournamentMode = tournamentMode;
+        reset();
+    }
+
+    public Boggle(String[][] board, boolean tournamentMode) throws BoggleException
+    {
+        this.tournamentMode = tournamentMode;
         reset(board);
     }
 
@@ -40,6 +49,12 @@ public class Boggle
         guessedWords = new ArrayList<String>();
     }
 
+    public void resetScoreAndGuesses()
+    {
+        this.guessedWords = new ArrayList<String>();
+        this.score = 0;
+    }
+
     public boolean enterWord(String word)
     {
         if(!guessedWords.contains(word) && legalWords.contains(word))
@@ -50,6 +65,8 @@ public class Boggle
         }
         else
         {
+            if(tournamentMode)
+                score--;
             return false;
         }
     }
