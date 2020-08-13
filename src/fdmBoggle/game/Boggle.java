@@ -12,6 +12,7 @@ public class Boggle
     private HashSet<String> legalWords;
     private int score;
     boolean tournamentMode;
+    long tStartTime, tEndTime;
 
     public Boggle()
     {
@@ -34,7 +35,16 @@ public class Boggle
     public void reset()
     {
         board = BoardGenerator.generateBoard();
-        legalWords = WordGetter.getLegalWords(this);
+        if(tournamentMode)
+        {
+            tStartTime = System.currentTimeMillis();
+            legalWords = WordGetter.getLegalWords(this);
+            tEndTime = System.currentTimeMillis();
+        }
+        else
+        {
+            legalWords = WordGetter.getLegalWords(this);
+        }
         score = 0;
         guessedWords = new ArrayList<String>();
     }
@@ -69,6 +79,16 @@ public class Boggle
                 score--;
             return false;
         }
+    }
+
+    public long[] getTimeAndScore()
+    {
+        long[] answer = new long[2];
+        answer[0] = tEndTime - tStartTime;
+        for(String word : legalWords)
+            answer[1] += (long) getWordScore(word);
+        
+        return answer;
     }
 
     public void printBoard()

@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
 import fdmBoggle.game.Boggle;
+import fdmBoggle.ai.BoggleDictionary;
 
 public class Tournament
 {
@@ -51,6 +52,8 @@ public class Tournament
 
         System.out.println("Creating game boards.");
 
+        BoggleDictionary.init();
+
         for(int i = 0;i < noOfGames;i++)
             games[i] = new Boggle(true);
         
@@ -64,6 +67,16 @@ public class Tournament
             output.write("\n , ");
             for(int i = 0;i < noOfGames;i++)
                 output.write("score, time(milliseconds), score/time, ");
+            output.write("\n");
+
+            output.write("Default, ");
+
+            for(Boggle game : games)
+            {
+                long[] answer = game.getTimeAndScore();
+                output.write(answer[1] + ", " + answer[0] + ", " + (double)answer[1] / (double)answer[0] + ", ");
+            }
+
             output.write("\n");
         
             for(BogglePlayer player : players)
