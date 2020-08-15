@@ -6,6 +6,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.*;
 import fdmBoggle.game.Boggle;
+
+/**
+ * A dedicated gui class for the boggle game
+ */
 public class Gui extends JFrame implements ActionListener
 {
     private static final long serialVersionUID = 3781965546199397230L;
@@ -20,6 +24,13 @@ public class Gui extends JFrame implements ActionListener
     Timer timer;
     int time;
 
+    /**
+     * The default constructor
+     * Sets all fields and Gui components
+     * Creates Boggle board instance
+     * Creates ButtonManager instance and adds it to all appropriate buttons
+     * Adds itself as an actionListener to reset button
+     */
     public Gui()
     {
         super("Boggle");
@@ -60,7 +71,7 @@ public class Gui extends JFrame implements ActionListener
         wordbox = new JScrollPane(wordArea);
         wordbox.setBounds(500, 200, 200, 500);
         
-
+        //All components are added here
         add(buttons);
         add(reset);
         add(title);
@@ -70,6 +81,7 @@ public class Gui extends JFrame implements ActionListener
         add(score);
         add(wordbox);
 
+        //Gui variables are set here
         setSize(700, 750);
         setLayout(null);
         setVisible(true);
@@ -80,8 +92,13 @@ public class Gui extends JFrame implements ActionListener
         buttonManager.setBoggle(boggle);
     }
 
+    /**
+     * Calls reset on active Boggle game
+     * Updates all appropriate components
+     */
     public void reset()
     {
+        //Initialises game if it hasn't yet been initialised
         if(boggle == null)
             boggle = new Boggle();
         else
@@ -100,12 +117,18 @@ public class Gui extends JFrame implements ActionListener
         timer = new Timer(true);
         timer.scheduleAtFixedRate(new CountDown(), 1000, 1000);
     }
-
+    
+    /**
+      * Updates visible score
+      */
     public void updateScore()
     {
         score.setText(Integer.toString(boggle.getScore()));
     }
 
+    /**
+     * Calls this.reset()
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -113,6 +136,11 @@ public class Gui extends JFrame implements ActionListener
         buttonManager.reset();
     }
 
+    /*
+     * A timer task created specifically for the timer in the of the screen
+     * Decrements time value by 1 every second
+     * Calls finish() on ButtonManager once time runs out
+     */
     private class CountDown extends TimerTask
     {
 

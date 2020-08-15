@@ -3,8 +3,21 @@ package fdmBoggle.game;
 import java.util.*;
 import java.io.*;
 
+/**
+ * This class contains one static method which returns a 4 * 4 board based on a specific text file containing the game "dice"
+ * It's constructor is private. This class cannot be instantiated
+ */
 public class BoardGenerator {
+
+    /** Exists solely to prevent instantiation */
+    private BoardGenerator()
+    {}
     
+    /**
+     * Generates a 4 * 4 board
+     * Uses a text file '$HOME/Documents/data/dice.txt' to build board. If file is not present, shuts down JVM
+     * @return board as represented by String[][]
+     */
     public static String[][] generateBoard()
     {
         String[][] board = new String[4][4];
@@ -24,7 +37,8 @@ public class BoardGenerator {
         }
         catch(Exception e)
         {
-            System.out.println(e.getMessage());
+            System.out.println("Error: " + e.getMessage() + " in BoardGenerate.generateBoard(). Aborting");
+            System.exit(1);
         }
 
         Collections.shuffle(letters);

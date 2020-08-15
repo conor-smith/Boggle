@@ -1,5 +1,8 @@
 package fdmBoggle.game;
 
+/**
+ * Custom exception class for this game
+ */
 public class BoggleException extends Exception
 {
 
