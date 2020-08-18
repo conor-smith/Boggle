@@ -36,6 +36,8 @@ public class Gui extends JFrame implements ActionListener
         super("Boggle");
         
         //components
+        Font titleFont = new Font("Dialog", Font.PLAIN, 50);
+        Font defaultFont = new Font("Dialog", Font.PLAIN, 20);
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(4, 4));
         buttons.setBounds(50, 200, 400, 400);
@@ -46,27 +48,35 @@ public class Gui extends JFrame implements ActionListener
             {
                 board[i][j] = new BoggleButton(i, j);
                 board[i][j].addActionListener(buttonManager);
+                board[i][j].setFont(defaultFont);
                 buttons.add(board[i][j]);
             }
 
         reset = new JButton("Reset");
         reset.setBounds(50, 650, 100, 30);
+        reset.setFont(defaultFont);
         reset.addActionListener(this);
         enter = new JButton("Enter");
         enter.setBounds(350, 650, 100, 30);
+        enter.setFont(defaultFont);
         enter.addActionListener(buttonManager);
 
-        title = new JLabel("Boggle");
+        title = new JLabel("Boggle", SwingConstants.CENTER);
         title.setBounds(0, 0, 700, 100);
+        title.setFont(titleFont);
         timerLabel = new JLabel("Timer");
         timerLabel.setBounds(100, 100, 200, 40);
+        timerLabel.setFont(defaultFont);
         scoreLabel = new JLabel("Score");
-        scoreLabel.setBounds(500, 100, 50, 40);
+        scoreLabel.setBounds(500, 100, 70, 40);
+        scoreLabel.setFont(defaultFont);
         score = new JLabel("0");
-        score.setBounds(550, 100, 50, 40);
+        score.setBounds(570, 100, 50, 40);
+        score.setFont(defaultFont);
 
         wordArea = new JTextArea();
         wordArea.setEditable(false);
+        wordArea.setFont(defaultFont);
 
         wordbox = new JScrollPane(wordArea);
         wordbox.setBounds(500, 200, 200, 500);
